@@ -18,4 +18,5 @@ async function run() {
     await client.close();
   }
 }
+
 run().catch(console.dir);
