@@ -1,8 +1,11 @@
 console.log("Starting server...");
 const express = require('express');
 const connectDB = require('./server.js');
+var cors = require('cors')
 
 const app = express();
+
+app.use(cors())
 
 // Connect to MongoDB
 connectDB();
