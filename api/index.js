@@ -1,8 +1,12 @@
 console.log("Starting server...");
 const express = require('express');
+const cors = require('cors');
 const connectDB = require('./server.js');
 
+
 const app = express();
+
+app.use(cors())
 
 // Connect to MongoDB
 connectDB();
@@ -12,10 +16,6 @@ app.use(express.json({ extended: false }));
 
 // Define Routes
 app.use('/api', require("./Routes/users.js"));
-
-app.get('/api/hello', (req, res) => {
-    res.json({ message: 'Hello from Express on Vercel with MongoDB!' });
-  });
   
 
 const PORT = process.env.PORT || 8080;

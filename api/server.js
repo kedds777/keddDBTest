@@ -6,7 +6,7 @@ const uri = "mongodb+srv://admin:NvsRHQ2sS8TocN3g@kedd-cluster.ilkozbn.mongodb.n
 
 const connectDB = async () => {
   try{
-    await mongoose.connect(uri);
+    await mongoose.connect(process.env.MONGODB_URI);
     console.log("MongoDB Connected");
   }
   catch(e){
