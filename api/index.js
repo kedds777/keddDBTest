@@ -8,6 +8,8 @@ const app = express();
 
 app.use(cors())
 
+console.log("Using CORS...");
+
 // Connect to MongoDB
 connectDB();
 
