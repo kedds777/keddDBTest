@@ -48,7 +48,7 @@ let commentSchema = {
     created: "date/time",
     comment: "string",
     commentedBy: User,
-    replies: [Comments]
+    replies: [Comments],
     likes: "int",
     dislikes: "int"
 }

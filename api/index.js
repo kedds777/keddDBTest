@@ -1,14 +1,8 @@
 console.log("Starting server...");
 const express = require('express');
-const cors = require('cors');
 const connectDB = require('./server.js');
 
-
 const app = express();
-
-app.use(cors())
-
-console.log("Using CORS...");
 
 // Connect to MongoDB
 connectDB();
@@ -24,4 +18,4 @@ const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 
-export default app;
+//export default app;
