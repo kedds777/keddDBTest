@@ -7,8 +7,20 @@ const User = require("../Models/userModel");
 // @access  Public
 router.get('/users', async (req, res) => {
   try {
-    console.log("Getting users...");
     const users = await User.find();
+    res.json(users);
+  } catch (err) {
+    res.status(500).send('Server error');
+  }
+});
+
+router.delete('/users', async (req, res) => {
+  try {
+    const adminHeader = req.headers.admin;
+    if(adminHeader !== "allowAllDelete"){
+      res.status(401).send('Unauthorized - Please provide the correct admin header');
+    }
+    const users = await User.deleteMany();
     res.json(users);
   } catch (err) {
     res.status(500).send('Server error');
@@ -17,7 +29,6 @@ router.get('/users', async (req, res) => {
 
 router.get('/users/:id', async (req, res) => {
     try {
-      console.log("ID passed: " + req.params.id);
       const users = await User.find({_id: req.params.id});
       res.json(users);
     } catch (err) {
@@ -29,9 +40,9 @@ router.get('/users/:id', async (req, res) => {
 // @desc    Create a new user
 // @access  Public
 router.post('/users', async (req, res) => {
-  const { username, email } = req.body;
+  const { username, email, darkMode } = req.body;
   try {
-    let user = new User({ username, email });
+    let user = new User({ username, email, darkMode });
     user = await user.save();
     res.json(user);
   } catch (err) {

@@ -1,6 +1,8 @@
 let userSchema = {
     accountId: "string",
     created: "date/time",
+    darkMode: "bool",
+    searchHistory: ["string"],
     firstName: "string",
     lastName: "string",
     username: "string",
@@ -20,20 +22,20 @@ let playlistSchema = {
 let channelSchema ={
     created: "date/time",
     name: "string",
-    videos: ["videoId"],
-    subscribers: [User]
+    videos: [Video],
+    subscribers: [User],
+    channelName: "string",
 }
 
 let videoSchema = {
-    thumbnailImg: "BIN",
-    public: "bool",
-    binData: "BIN",
+    thumbnailImg: "BIN", //
+    public: "bool", //
+    binData: "BIN", //
     uploaded: "date/time",
-    uploadedBy: User,
     likes: "int",
     dislikes: "int",
     description: "string",
-    channel: Channel,
+    channel: Channel, //
     comments: [Comments],
     views: "int",
     tags: [Tags]

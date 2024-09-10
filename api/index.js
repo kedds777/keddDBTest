@@ -1,6 +1,9 @@
 console.log("Starting server...");
 const express = require('express');
 const connectDB = require('./server.js');
+
+
+
 var cors = require('cors')
 
 const app = express();
@@ -15,6 +18,7 @@ app.use(express.json({ extended: false }));
 
 // Define Routes
 app.use('/api', require("./Routes/users.js"));
+app.use('/api', require("./Routes/videos.js"));
   
 
 const PORT = process.env.PORT || 8080;
