@@ -3,7 +3,17 @@ const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema(
     {
         "created": {
-          "type": "String"
+          "type": "Date",
+          "default": Date.now
+        },
+        "darkMode": {
+          "type": "Boolean",
+          "default": false
+        },
+        "searchHistory": {
+          "type": [
+            "String"
+          ]
         },
         "firstName": {
           "type": "String"
@@ -37,7 +47,7 @@ const UserSchema = new mongoose.Schema(
             "String"
           ]
         },
-        "following": {
+        "subscriptions": {
           "type": [
             "String"
           ]
