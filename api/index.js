@@ -17,8 +17,10 @@ connectDB();
 app.use(express.json({ extended: false }));
 
 // Define Routes
+app.use('/api', require("./Routes/authentication.js"));
 app.use('/api', require("./Routes/users.js"));
 app.use('/api', require("./Routes/videos.js"));
+
   
 
 const PORT = process.env.PORT || 8080;

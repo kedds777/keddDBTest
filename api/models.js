@@ -1,18 +1,22 @@
 let userSchema = {
     accountId: "string",
     created: "date/time",
-    darkMode: "bool",
-    searchHistory: ["string"],
     firstName: "string",
     lastName: "string",
     username: "string",
     email: "string",
-    watchHistory: [Video],
-    playlist: [Playlist],
-    likedVideos: [Video],
-    yourChannels: [Channel],
-    following: [Channel],
-    algorithmStuff: "uhhhhh"
+    password: "string",
+    authToken: "string",
+    refreshToken: "string",
+    preferences: {
+        darkMode: "bool",
+        searchHistory: ["string"],
+        watchHistory: ["string"],
+        likedVideos: ["string"],
+        yourChannels: ["string"],
+        subscriptions: ["string"],
+        algorithmStuff: "string"
+    }
 };
 
 let playlistSchema = {

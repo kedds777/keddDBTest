@@ -30,24 +30,16 @@ router.delete('/users', async (req, res) => {
 router.get('/users/:id', async (req, res) => {
     try {
       const users = await User.find({_id: req.params.id});
-      res.json(users);
+      let responseObj = {
+        username: users[0].username,
+        email: users[0].email,
+        darkMode: users[0].darkMode,
+        created: users[0].created
+      }
+      res.json(responseObj);
     } catch (err) {
       res.status(500).send('Server error: ' + err);
     }
   });
-
-// @route   POST api/users
-// @desc    Create a new user
-// @access  Public
-router.post('/users', async (req, res) => {
-  const { username, email, darkMode } = req.body;
-  try {
-    let user = new User({ username, email, darkMode });
-    user = await user.save();
-    res.json(user);
-  } catch (err) {
-    res.status(500).send('Server error');
-  }
-});
 
 module.exports = router;
