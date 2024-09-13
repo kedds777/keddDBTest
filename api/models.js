@@ -1,8 +1,6 @@
 let userSchema = {
     accountId: "string",
-    created: "date/time",
-    firstName: "string",
-    lastName: "string",
+    created: "date/time",    
     username: "string",
     email: "string",
     password: "string",
@@ -18,6 +16,25 @@ let userSchema = {
         algorithmStuff: "string"
     }
 };
+
+
+let userSchema2 = {
+    created: "date/time",
+    username: "string",
+    email: "string",
+    authToken: "string",
+    refreshToken: "string",
+    preferences: {
+        darkMode: "bool",
+        searchHistory: ["string"],
+        watchHistory: ["string"],
+        likedVideos: ["string"],
+        yourChannels: ["string"],
+        subscriptions: ["string"],
+        algorithmStuff: "string"
+    }
+};
+
 
 let playlistSchema = {
     

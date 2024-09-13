@@ -11,12 +11,22 @@ const User = require("../Models/userModel");
 //////////
 
 router.post('/signup', async (req, res) => {
-    const { username, email, darkMode, firstName, lastName, password } = req.body;
+    const { username, email, preferences, firstName, lastName, password } = req.body;
+    const {darkMode, searchHistory} = preferences;
     ///Do some validating here
 
     //If it all passes
     try {
-      let user = new User({ username, email, darkMode,firstName, lastName, password });
+      let user = new User({ username: username, 
+                            email: email, 
+                            preferences: {
+                                darkMode: darkMode,
+                                searchHistory: searchHistory
+                            }, 
+                            firstName: firstName, 
+                            lastName: lastName, 
+                            password: password 
+                        });
       user = await user.save();
       res.json(user);
     } catch (err) {
@@ -24,8 +34,26 @@ router.post('/signup', async (req, res) => {
     }
   });
 
+  router.post('/login', async (req, res) => {
+    const {email, password} = req.body;
+    ///Do some validating here
 
-  
+    //If it all passes
+    try {
+      let user = await User.find({email: email});
+      //Need to do some encryption here, but for now...
+      if(!user || password !== user[0].password){
+        throw Error("Email or password is incorrect.");
+      }
+      res.json(user);
+      
+    } catch (err) {
+      res.status(500).send('Server error' + err);
+    }
+  })
+
+
+
 
 
 module.exports = router;
