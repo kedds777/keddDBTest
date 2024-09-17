@@ -33,12 +33,14 @@ router.get("/videos/:id", async (req, res) => {
 //////////
 
 router.post("/videos", async (req, res) => {
-  const { title, description } = req.body;
+  const { title, description, thumbnail } = req.body;
+  
   try {
-    let user = new Video({ title, description });
-    user = await user.save();
-    res.json(user);
+    let video = new Video({ title, description, thumbnail });
+    video = await video.save();
+    res.json(video);
   } catch (err) {
+    console.log(err);
     res.status(500).send("Server error");
   }
 });
